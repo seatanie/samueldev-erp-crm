@@ -10,7 +10,7 @@ export default function UpgradeButton() {
   const translate = useLanguage();
 
   return (
-    <Badge count={1} size="small">
+    <Badge count={0} size="small">
       <Button
         type="primary"
         style={{
@@ -22,15 +22,11 @@ export default function UpgradeButton() {
         }}
         icon={<RocketOutlined />}
         onClick={() => {
-          window.open(`https://entreprise.idurarapp.com`);
+          window.open(`https://app.movilventas.com/`);
         }}
       >
-        {translate('Try Entreprise Version')}
+        {translate('Antigua Web')}
       </Button>
     </Badge>
   );
 }
-
-console.log(
-  '🚀 Welcome to IDURAR ERP CRM! Did you know that we also offer commercial customization services? Contact us at hello@idurarapp.com for more information.'
-);

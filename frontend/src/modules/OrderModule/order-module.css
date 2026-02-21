@@ -1,0 +1,42 @@
+/* Animación de pulso para el botón de Excel */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(82, 196, 26, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(82, 196, 26, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(82, 196, 26, 0);
+  }
+}
+
+/* Animación de descarga exitosa */
+@keyframes downloadSuccess {
+  0% {
+    transform: scale(1);
+    background-color: #52c41a;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #73d13d;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #52c41a;
+  }
+}
+
+/* Clase para animación de éxito */
+.excel-download-success {
+  animation: downloadSuccess 0.6s ease-in-out;
+}
+
+/* Efecto hover para el botón de Excel */
+.excel-export-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(82, 196, 26, 0.3);
+}
+
+
+

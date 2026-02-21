@@ -1,0 +1,269 @@
+/* Estilos para detalles formales y consistentes */
+
+.detail-card {
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+}
+
+.detail-header {
+  margin-bottom: 24px;
+  color: #262626;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+  font-size: 18px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border-left: 4px solid #1890ff;
+}
+
+.detail-section-title {
+  font-size: 16px;
+  color: #1890ff;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #595959;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.detail-value {
+  color: #262626;
+  font-size: 14px;
+  text-align: right;
+  flex: 1;
+}
+
+.detail-table {
+  margin-top: 16px;
+}
+
+.detail-table .ant-table-thead > tr > th {
+  background-color: #fafafa;
+  color: #595959;
+  font-weight: 600;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.detail-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-modal {
+  border-radius: 8px;
+}
+
+.detail-modal .ant-modal-header {
+  border-bottom: 2px solid #f0f0f0;
+  background-color: #fafafa;
+}
+
+.detail-modal .ant-modal-title {
+  color: #262626;
+  font-weight: 600;
+}
+
+.detail-form {
+  padding: 16px 0;
+}
+
+.detail-form .ant-form-item-label > label {
+  font-weight: 600;
+  color: #595959;
+}
+
+.detail-form .ant-input,
+.detail-form .ant-select-selector,
+.detail-form .ant-input-number {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+}
+
+.detail-form .ant-input:focus,
+.detail-form .ant-select-focused .ant-select-selector,
+.detail-form .ant-input-number:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.detail-button {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.detail-button-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.detail-button-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.detail-tag {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.detail-statistic {
+  text-align: center;
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+}
+
+.detail-statistic .ant-statistic-title {
+  color: #595959;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.detail-statistic .ant-statistic-content {
+  color: #262626;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Estilos para listas de detalles */
+.detail-list {
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+}
+
+.detail-list-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-list-item:last-child {
+  border-bottom: none;
+}
+
+.detail-list-item:hover {
+  background-color: #fafafa;
+}
+
+/* Estilos para estados y badges */
+.detail-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.detail-status-pending {
+  background-color: #fff7e6;
+  color: #d46b08;
+  border: 1px solid #ffd591;
+}
+
+.detail-status-confirmed {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+.detail-status-completed {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.detail-status-cancelled {
+  background-color: #fff2f0;
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+}
+
+/* Estilos para información de contacto */
+.contact-info {
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.contact-info .contact-label {
+  font-weight: 600;
+  color: #52c41a;
+  margin-bottom: 8px;
+}
+
+.contact-info .contact-value {
+  color: #262626;
+  font-size: 14px;
+}
+
+/* Estilos para totales y resúmenes */
+.summary-section {
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.summary-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1890ff;
+}
+
+.summary-label {
+  color: #595959;
+  font-weight: 500;
+}
+
+.summary-value {
+  color: #262626;
+  font-weight: 600;
+}

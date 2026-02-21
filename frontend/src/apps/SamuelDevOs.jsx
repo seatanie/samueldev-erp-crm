@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '@/redux/auth/selectors';
 import { AppContextProvider } from '@/context/appContext';
+import { FontProvider } from '@/context/FontContext';
 import PageLoader from '@/components/PageLoader';
 import AuthRouter from '@/router/AuthRouter';
 import Localization from '@/locale/Localization';
@@ -12,19 +13,21 @@ const ErpApp = lazy(() => import('./ErpApp'));
 
 const DefaultApp = () => (
   <Localization>
-    <AppContextProvider>
-      <Suspense fallback={<PageLoader />}>
-        <ErpApp />
-      </Suspense>
-    </AppContextProvider>
+    <FontProvider>
+      <AppContextProvider>
+        <Suspense fallback={<PageLoader />}>
+          <ErpApp />
+        </Suspense>
+      </AppContextProvider>
+    </FontProvider>
   </Localization>
 );
 
-export default function IdurarOs() {
+export default function SamuelDevOs() {
   const { isLoggedIn } = useSelector(selectAuth);
 
   console.log(
-    '🚀 Welcome to IDURAR ERP CRM! Did you know that we also offer commercial customization services? Contact us at hello@idurarapp.com for more information.'
+    '🚀 Bienvenido DESARROLLADO por Samuel Carrillo.'
   );
 
   // // Online state
@@ -64,7 +67,9 @@ export default function IdurarOs() {
   if (!isLoggedIn)
     return (
       <Localization>
-        <AuthRouter />
+        <FontProvider>
+          <AuthRouter />
+        </FontProvider>
       </Localization>
     );
   else {

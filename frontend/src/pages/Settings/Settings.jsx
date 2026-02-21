@@ -4,6 +4,7 @@ import {
   DollarOutlined,
   FileImageOutlined,
   TrophyOutlined,
+  FileTextOutlined,
 } from '@ant-design/icons';
 
 import TabsContent from '@/components/TabsContent/TabsContent';
@@ -13,6 +14,7 @@ import GeneralSettings from './GeneralSettings';
 import CompanySettings from './CompanySettings';
 import FinanceSettings from './FinanceSettings';
 import MoneyFormatSettings from './MoneyFormatSettings';
+import PDFSettings from './PDFSettings';
 
 import useLanguage from '@/locale/useLanguage';
 import { useParams } from 'react-router-dom';
@@ -38,6 +40,12 @@ export default function Settings() {
       label: translate('Company Logo'),
       icon: <FileImageOutlined />,
       children: <CompanyLogoSettings />,
+    },
+    {
+      key: 'pdf_settings',
+      label: translate('PDF Configuration'),
+      icon: <FileTextOutlined />,
+      children: <PDFSettings />,
     },
     {
       key: 'currency_settings',

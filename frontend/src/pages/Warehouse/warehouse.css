@@ -1,0 +1,151 @@
+/* Página de Almacenes */
+.warehouse-page {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Tabla */
+.warehouse-page .ant-table {
+  background: white;
+  border-radius: 8px;
+}
+
+.warehouse-page .ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #262626;
+}
+
+.warehouse-page .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+/* Tags */
+.warehouse-page .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+/* Botones */
+.warehouse-page .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.warehouse-page .ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2);
+}
+
+.warehouse-page .ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.3);
+}
+
+/* Modal */
+.warehouse-page .ant-modal {
+  border-radius: 8px;
+}
+
+.warehouse-page .ant-modal-header {
+  border-radius: 8px 8px 0 0;
+  background: #fafafa;
+}
+
+.warehouse-page .ant-modal-title {
+  font-weight: 600;
+  color: #262626;
+}
+
+/* Formularios */
+.warehouse-page .ant-form-item-label > label {
+  font-weight: 500;
+  color: #262626;
+}
+
+.warehouse-page .ant-input,
+.warehouse-page .ant-input-number,
+.warehouse-page .ant-select-selector {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+}
+
+.warehouse-page .ant-input:focus,
+.warehouse-page .ant-input-number:focus,
+.warehouse-page .ant-select-focused .ant-select-selector {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* Progress bar */
+.warehouse-page .ant-progress {
+  margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .warehouse-page {
+    padding: 16px;
+  }
+
+  .warehouse-page .ant-table {
+    font-size: 12px;
+  }
+
+  .warehouse-page .ant-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .warehouse-page {
+    padding: 12px;
+  }
+
+  .warehouse-page .ant-page-header {
+    padding: 16px 0;
+  }
+
+  .warehouse-page .ant-page-header-heading-title {
+    font-size: 18px;
+  }
+
+  .warehouse-page .ant-table-thead > tr > th,
+  .warehouse-page .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.warehouse-page .ant-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Efectos hover */
+.warehouse-page .ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.warehouse-page .ant-btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}

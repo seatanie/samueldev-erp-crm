@@ -1,0 +1,80 @@
+/* Estilos para el módulo de administradores - Sin scroll */
+
+/* Contenedor principal */
+.admin-module {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ajustar el layout principal */
+.admin-module .whiteBox {
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Ajustar el contenido principal del layout */
+.admin-module .layoutPadding {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Header sin scroll */
+.admin-module .ant-page-header {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+}
+
+/* Tabla con altura fija */
+.admin-module .ant-table-wrapper {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.admin-module .ant-table-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.admin-module .ant-table {
+  height: 100%;
+}
+
+.admin-module .ant-table-tbody {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+/* Paginación fija en la parte inferior */
+.admin-module .ant-pagination {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  background: #fff;
+  margin: 0;
+}
+
+/* Eliminar espacios extra */
+.admin-module * {
+  box-sizing: border-box;
+}
+
+/* Asegurar que no haya scroll en el body cuando estemos en admin */
+body.admin-page {
+  overflow: hidden;
+  height: 100vh;
+}

@@ -69,7 +69,14 @@ export default function Search({ config }) {
     let optionResults = [];
 
     result.map((item) => {
-      const labels = displayLabels.map((x) => item[x]).join(' ');
+      const labels = displayLabels.map((x) => {
+        const value = item[x];
+        // Si el valor es un objeto, extraer el nombre o convertir a string
+        if (value && typeof value === 'object') {
+          return value.name || value.toString();
+        }
+        return value || '';
+      }).join(' ');
       optionResults.push({ label: labels, value: item[outputValue] });
     });
 

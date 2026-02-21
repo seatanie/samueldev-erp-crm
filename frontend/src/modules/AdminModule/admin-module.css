@@ -1,0 +1,118 @@
+/* Estilos para el módulo de administradores */
+.admin-module-container {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-title {
+  margin: 0;
+  flex: 1;
+  color: #262626;
+  font-weight: 600;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-table-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.admin-table-card .ant-card-body {
+  padding: 0;
+}
+
+.admin-role-tag {
+  font-weight: 500;
+}
+
+.admin-status-tag {
+  font-weight: 500;
+}
+
+/* Estilos para el panel lateral */
+.admin-side-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-details-title {
+  margin-bottom: 24px;
+  color: #262626;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+.admin-detail-item {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #fafafa;
+}
+
+.admin-detail-label {
+  font-weight: 600;
+  color: #595959;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.admin-detail-value {
+  color: #262626;
+  font-size: 14px;
+}
+
+/* Estilos para el modal de contraseña */
+.password-modal .ant-modal-header {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.password-modal .ant-modal-body {
+  padding: 24px;
+}
+
+.password-form-item {
+  margin-bottom: 16px;
+}
+
+.password-form-label {
+  font-weight: 600;
+  color: #262626;
+}
+
+.password-input {
+  border-radius: 6px;
+}
+
+.password-submit-buttons {
+  text-align: right;
+  margin-top: 24px;
+}
+
+.password-submit-buttons .ant-btn {
+  margin-left: 8px;
+}
+
+/* Animaciones suaves */
+.admin-transition {
+  transition: all 0.3s ease;
+}
+
+.admin-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+

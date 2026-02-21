@@ -11,8 +11,9 @@ import { selectCurrentAdmin } from '@/redux/auth/selectors';
 import { FILE_BASE_URL } from '@/config/serverApiConfig';
 
 import useLanguage from '@/locale/useLanguage';
+import SimpleLanguageSwitcher from '@/components/Languaje/SimpleLanguageSwitcher';
+import FontPicker from '@/components/FontPicker';
 
-import UpgradeButton from './UpgradeButton';
 
 export default function HeaderContent() {
   const currentAdmin = useSelector(selectCurrentAdmin);
@@ -123,11 +124,15 @@ export default function HeaderContent() {
 
       {/* <AppsButton /> */}
 
-      <UpgradeButton />
+      {/* Selector de idioma simple */}
+      <SimpleLanguageSwitcher />
+
+      {/* Selector de fuente */}
+      <FontPicker />
+
+      {/* Componente de prueba temporal */}
+      {/* <TestLanguage /> */}
     </Header>
   );
 }
 
-//  console.log(
-//    '🚀 Welcome to IDURAR ERP CRM! Did you know that we also offer commercial customization services? Contact us at hello@idurarapp.com for more information.'
-//  );

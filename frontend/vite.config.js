@@ -9,7 +9,7 @@ export default ({ mode }) => {
   const proxy_url =
     process.env.VITE_DEV_REMOTE === 'remote'
       ? process.env.VITE_BACKEND_SERVER
-      : 'http://localhost:8888/';
+      : 'http://samuel-dev-backend:8889/';
 
   const config = {
     plugins: [react()],
@@ -20,12 +20,28 @@ export default ({ mode }) => {
       },
     },
     server: {
-      port: 3000,
+      port: 3001,
       proxy: {
         '/api': {
           target: proxy_url,
           changeOrigin: true,
           secure: false,
+          rewrite: (path) => path.replace(/^\/api/, '/api'),
+          configure: (proxy, options) => {
+            proxy.on('proxyReq', (proxyReq, req, res) => {
+              // Preservar todos los headers
+              Object.keys(req.headers).forEach(key => {
+                proxyReq.setHeader(key, req.headers[key]);
+              });
+              
+              console.log('🔍 Proxy request:', req.method, req.url);
+              console.log('🔍 Proxy headers:', req.headers);
+            });
+            
+            proxy.on('proxyRes', (proxyRes, req, res) => {
+              console.log('🔍 Proxy response status:', proxyRes.statusCode);
+            });
+          },
         },
       },
     },

@@ -99,6 +99,20 @@ export default function CreateItem({ config, CreateForm }) {
           items: newList,
         };
       }
+      
+      // 🎨 Procesar el template de personalización si existe
+      if (fieldsValue.invoiceTemplate && typeof fieldsValue.invoiceTemplate === 'string') {
+        try {
+          fieldsValue.invoiceTemplate = JSON.parse(fieldsValue.invoiceTemplate);
+          console.log('🎨 Template procesado:', fieldsValue.invoiceTemplate);
+        } catch (error) {
+          console.error('❌ Error al procesar template:', error);
+          delete fieldsValue.invoiceTemplate;
+        }
+      }
+      
+      console.log('🚀 ~ onSubmit final ~ fieldsValue:', fieldsValue);
+      console.log('🎨 Template final:', fieldsValue.invoiceTemplate);
     }
     dispatch(erp.create({ entity, jsonData: fieldsValue }));
   };

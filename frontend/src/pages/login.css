@@ -1,0 +1,478 @@
+/* Estilos para el login estilo Frappe */
+.frappe-login-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Header con Logo y Título */
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-container {
+  margin-bottom: 24px;
+}
+
+.logo-square {
+  width: 64px;
+  height: 64px;
+  background: #000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo-letter {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Georgia', serif;
+}
+
+.login-title {
+  color: #333 !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Tarjeta Principal */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  background: #fff !important;
+  padding: 32px !important;
+}
+
+.login-card .ant-card-body {
+  padding: 0 !important;
+}
+
+/* Inputs */
+.frappe-input {
+  height: 48px !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  background: #fafafa !important;
+}
+
+.frappe-input:hover {
+  border-color: #000 !important;
+  background: #fff !important;
+}
+
+.frappe-input:focus {
+  border-color: #000 !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+  background: #fff !important;
+}
+
+.frappe-input .ant-input-prefix {
+  margin-right: 12px !important;
+  color: #666 !important;
+}
+
+.input-icon {
+  font-size: 18px !important;
+}
+
+/* Campo de Contraseña */
+.ant-input-password {
+  background: #fafafa !important;
+}
+
+.ant-input-password:hover {
+  background: #fff !important;
+}
+
+.ant-input-password:focus-within {
+  background: #fff !important;
+}
+
+.password-toggle {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+.toggle-text {
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+/* Link Olvidé Contraseña */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.forgot-link {
+  color: #666 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+}
+
+.forgot-link:hover {
+  color: #000 !important;
+}
+
+/* Botón Principal */
+.frappe-primary-button {
+  height: 48px !important;
+  background: #000 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.frappe-primary-button:hover {
+  background: #333 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.frappe-primary-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Separador */
+.login-separator {
+  text-align: center;
+  margin: 24px 0;
+  position: relative;
+}
+
+.login-separator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.separator-text {
+  background: #fff !important;
+  padding: 0 16px !important;
+  color: #999 !important;
+  font-size: 14px !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Botones Secundarios */
+.alternative-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.frappe-secondary-button {
+  height: 44px !important;
+  background: #f8f9fa !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  color: #333 !important;
+  transition: all 0.2s ease !important;
+}
+
+.frappe-secondary-button:hover {
+  background: #fff !important;
+  border-color: #000 !important;
+  color: #000 !important;
+}
+
+.frappe-secondary-button .anticon {
+  margin-right: 8px !important;
+}
+
+/* Mensaje de Error */
+.error-message {
+  margin-top: 16px;
+  text-align: center;
+  padding: 12px;
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  border-radius: 6px;
+}
+
+/* Footer */
+.login-footer {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.footer-text {
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+.footer-text a {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+.footer-text a:hover {
+  text-decoration: underline !important;
+}
+
+/* Modal para Login por Enlace de Correo */
+.email-link-modal .ant-modal-content {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.email-link-modal .ant-modal-header {
+  background: #f8f9fa !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  padding: 24px 32px 16px !important;
+  margin: 0 !important;
+}
+
+.email-link-modal .ant-modal-title {
+  color: #333 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+.email-link-modal .ant-modal-body {
+  padding: 32px !important;
+}
+
+.email-link-modal .ant-modal-close {
+  top: 20px !important;
+  right: 20px !important;
+  color: #666 !important;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-icon {
+  width: 64px;
+  height: 64px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.modal-icon .anticon {
+  font-size: 28px;
+  color: #666;
+}
+
+.modal-title {
+  color: #333 !important;
+  margin-bottom: 16px !important;
+  font-weight: 600 !important;
+}
+
+.modal-description {
+  color: #666 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 32px !important;
+  display: block !important;
+}
+
+.email-form {
+  text-align: left;
+}
+
+.modal-input {
+  height: 48px !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  background: #fafafa !important;
+}
+
+.modal-input:hover {
+  border-color: #000 !important;
+  background: #fff !important;
+}
+
+.modal-input:focus {
+  border-color: #000 !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+  background: #fff !important;
+}
+
+.send-link-button {
+  height: 48px !important;
+  background: #000 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.send-link-button:hover {
+  background: #333 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.send-link-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .frappe-login-container {
+    padding: 16px;
+  }
+  
+  .login-card {
+    padding: 24px !important;
+  }
+  
+  .logo-square {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .logo-letter {
+    font-size: 28px;
+  }
+  
+  .login-title {
+    font-size: 20px !important;
+  }
+  
+  .email-link-modal .ant-modal-body {
+    padding: 24px !important;
+  }
+  
+  .email-link-modal .ant-modal-header {
+    padding: 20px 24px 12px !important;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.frappe-login-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.login-card {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+/* Estados de Loading */
+.frappe-primary-button.ant-btn-loading,
+.send-link-button.ant-btn-loading {
+  background: #666 !important;
+}
+
+/* Focus visible para accesibilidad */
+.frappe-input:focus-visible,
+.frappe-primary-button:focus-visible,
+.frappe-secondary-button:focus-visible,
+.modal-input:focus-visible,
+.send-link-button:focus-visible {
+  outline: 2px solid #000 !important;
+  outline-offset: 2px !important;
+}
+
+/* Animaciones para el ícono del ojo */
+.eye-icon {
+  font-size: 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.eye-icon:hover {
+  transform: scale(1.1) !important;
+  color: #000 !important;
+}
+
+.eye-icon-visible {
+  animation: eyeBlink 0.4s ease-in-out !important;
+}
+
+.eye-icon-hidden {
+  animation: eyeOpen 0.4s ease-in-out !important;
+}
+
+@keyframes eyeBlink {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes eyeOpen {
+  0% {
+    transform: scaleY(0.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Animación de rotación suave al hacer clic */
+.password-toggle:active .eye-icon {
+  transform: rotate(10deg) scale(0.95) !important;
+  transition: transform 0.1s ease !important;
+}

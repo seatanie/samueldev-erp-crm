@@ -30,24 +30,7 @@ export const login =
     }
   };
 
-export const register =
-  ({ registerData }) =>
-  async (dispatch) => {
-    dispatch({
-      type: actionTypes.REQUEST_LOADING,
-    });
-    const data = await authService.register({ registerData });
 
-    if (data.success === true) {
-      dispatch({
-        type: actionTypes.REGISTER_SUCCESS,
-      });
-    } else {
-      dispatch({
-        type: actionTypes.REQUEST_FAILED,
-      });
-    }
-  };
 
 export const verify =
   ({ userId, emailToken }) =>

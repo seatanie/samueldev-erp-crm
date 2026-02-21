@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   EyeOutlined,
   EditOutlined,
@@ -95,14 +95,41 @@ export default function DataTable({ config, extra = [] }) {
     window.open(`${DOWNLOAD_BASE_URL}${entity}/${entity}-${record._id}.pdf`, '_blank');
   };
 
+  const [deletingItems, setDeletingItems] = useState(new Set());
+
   const handleDelete = (record) => {
-    dispatch(erp.currentAction({ actionType: 'delete', data: record }));
-    modal.open();
+    // Prevenir múltiples clics rápidos usando estado local
+    if (deletingItems.has(record._id)) return;
+    
+    // Marcar como eliminando en estado local
+    setDeletingItems(prev => new Set(prev).add(record._id));
+    
+    try {
+      dispatch(erp.currentAction({ actionType: 'delete', data: record }));
+      modal.open();
+    } catch (error) {
+      console.error('Error opening delete modal:', error);
+      // Limpiar la marca en caso de error
+      setDeletingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(record._id);
+        return newSet;
+      });
+    }
+    
+    // Limpiar la marca después de un tiempo
+    setTimeout(() => {
+      setDeletingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(record._id);
+        return newSet;
+      });
+    }, 2000);
   };
 
   const handleRecordPayment = (record) => {
     dispatch(erp.currentItem({ data: record }));
-    navigate(`/invoice/pay/${record._id}`);
+    navigate(`/invoice/record-payment/${record._id}`);
   };
 
   dataTableColumns = [

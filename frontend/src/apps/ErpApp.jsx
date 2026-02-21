@@ -25,9 +25,8 @@ import storePersist from '@/redux/storePersist';
 export default function ErpCrmApp() {
   const { Content } = Layout;
 
-  // const { state: stateApp, appContextAction } = useAppContext();
-  // // const { app } = appContextAction;
-  // const { isNavMenuClose, currentApp } = stateApp;
+  const { state: stateApp } = useAppContext();
+  const { isNavMenuClose } = stateApp;
 
   const { isMobile } = useResponsive();
 
@@ -69,7 +68,7 @@ export default function ErpCrmApp() {
             </Content>
           </Layout>
         ) : (
-          <Layout>
+          <Layout className={`main-content ${isNavMenuClose ? 'sidebar-collapsed' : ''}`}>
             <HeaderContent />
             <Content
               style={{

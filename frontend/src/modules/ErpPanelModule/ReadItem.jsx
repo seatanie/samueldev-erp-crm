@@ -23,6 +23,7 @@ import { DOWNLOAD_BASE_URL } from '@/config/serverApiConfig';
 import { useMoney, useDate } from '@/settings';
 import useMail from '@/hooks/useMail';
 import { useNavigate } from 'react-router-dom';
+import FactusStatus from '@/components/FactusStatus';
 
 const Item = ({ item, currentErp }) => {
   const { moneyFormatter } = useMoney();
@@ -240,6 +241,10 @@ export default function ReadItem({ config, selectedItem }) {
         <Descriptions.Item label={translate('email')}>{client.email}</Descriptions.Item>
         <Descriptions.Item label={translate('Phone')}>{client.phone}</Descriptions.Item>
       </Descriptions>
+      
+      {/* 🚀 Componente de estado FACTUS */}
+      <FactusStatus invoice={currentErp} />
+      
       <Divider />
       <Row gutter={[12, 0]}>
         <Col className="gutter-row" span={11}>

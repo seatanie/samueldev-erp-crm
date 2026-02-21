@@ -1,0 +1,186 @@
+/* Estilos personalizados para el selector de idioma */
+.language-switcher-container {
+  transition: all 0.3s ease;
+}
+
+.language-switcher-container:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilo para el dropdown del selector de idioma */
+.ant-select-dropdown.language-dropdown {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #f0f0f0;
+}
+
+/* Estilo para las opciones del selector */
+.ant-select-item-option {
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.ant-select-item-option:hover {
+  background-color: #f5f5f5;
+}
+
+.ant-select-item-option-selected {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+/* Estilo para el icono de bandera */
+.language-flag {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+/* Estilo para el selector compacto */
+.language-switcher-compact {
+  min-width: 90px !important;
+}
+
+/* Estilo para el selector normal */
+.language-switcher-normal {
+  min-width: 140px !important;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-switcher-container {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Estilos para el indicador de idioma */
+.language-indicator {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.language-indicator:hover {
+  transform: scale(1.1);
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+}
+
+.language-indicator .ant-badge-count {
+  background: transparent !important;
+  color: #000 !important;
+  font-size: 18px !important;
+  font-weight: bold;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+/* Estilos para el selector rápido de idioma */
+.fast-language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fast-language-switcher .lang-button {
+  transition: all 0.2s ease !important;
+  border-radius: 6px !important;
+  min-width: 40px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.fast-language-switcher .lang-button:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fast-language-switcher .lang-button.active {
+  background-color: #1890ff !important;
+  color: white !important;
+  border-color: #1890ff !important;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3) !important;
+}
+
+.fast-language-switcher .lang-button.active:hover {
+  background-color: #40a9ff !important;
+  border-color: #40a9ff !important;
+}
+
+/* Estilos para el selector simple de idioma */
+.simple-language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.simple-language-switcher .lang-button {
+  transition: all 0.2s ease !important;
+  border-radius: 6px !important;
+  min-width: 40px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.simple-language-switcher .lang-button:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.simple-language-switcher .lang-button.active {
+  background-color: #1890ff !important;
+  color: white !important;
+  border-color: #1890ff !important;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3) !important;
+}
+
+.simple-language-switcher .lang-button.active:hover {
+  background-color: #40a9ff !important;
+  border-color: #40a9ff !important;
+}
+
+/* Animación de cambio de idioma */
+@keyframes languageChange {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.lang-button.changing {
+  animation: languageChange 0.3s ease-in-out;
+}
+
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 768px) {
+  .language-switcher-compact {
+    min-width: 80px !important;
+  }
+  
+  .language-switcher-normal {
+    min-width: 120px !important;
+  }
+  
+  .language-indicator .ant-badge-count {
+    font-size: 16px !important;
+    padding: 3px 6px !important;
+  }
+  
+  .fast-language-switcher .lang-button,
+  .simple-language-switcher .lang-button {
+    min-width: 36px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+  }
+}

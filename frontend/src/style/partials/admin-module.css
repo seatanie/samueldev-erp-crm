@@ -1,0 +1,370 @@
+/* Estilos para el módulo de administración */
+.admin-module {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page-header {
+  margin-bottom: 32px;
+  text-align: center;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.page-header h2 {
+  margin-bottom: 12px !important;
+  color: #1890ff;
+  font-weight: 600;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  height: 100%;
+}
+
+.stat-info {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-info h3 {
+  margin: 0 0 8px 0 !important;
+  color: #1890ff;
+  font-weight: 600;
+  font-size: 28px !important;
+}
+
+.stat-info .ant-typography {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Tabla de administradores */
+.admin-table {
+  margin: 0;
+  overflow: hidden;
+}
+
+.admin-table .ant-table {
+  overflow: hidden;
+}
+
+.admin-table .ant-table-container {
+  overflow: hidden;
+}
+
+.admin-table .ant-table-content {
+  overflow: hidden;
+}
+
+.admin-table .ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #262626;
+  border-bottom: 2px solid #f0f0f0;
+  padding: 16px 12px;
+}
+
+.admin-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 12px;
+}
+
+.admin-table .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+/* Eliminar scroll horizontal molesto */
+.admin-table .ant-table-body {
+  overflow-x: hidden !important;
+}
+
+.admin-table .ant-table-scroll {
+  overflow-x: hidden !important;
+}
+
+/* Estilos específicos para la vista de administradores */
+.admin-table .ant-table-thead > tr > th:first-child {
+  padding-left: 24px;
+}
+
+.admin-table .ant-table-tbody > tr > td:first-child {
+  padding-left: 24px;
+}
+
+.admin-table .ant-table-thead > tr > th:last-child {
+  padding-right: 24px;
+}
+
+.admin-table .ant-table-tbody > tr > td:last-child {
+  padding-right: 24px;
+}
+
+/* Tags de rol con colores específicos */
+.ant-tag {
+  border-radius: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: none;
+  font-size: 12px;
+}
+
+/* Switch personalizado */
+.ant-switch-checked {
+  background-color: #1890ff;
+}
+
+.ant-switch {
+  border-radius: 12px;
+}
+
+/* Paginación simplificada */
+.ant-pagination-simple .ant-pagination-simple-pager {
+  margin: 0 8px;
+}
+
+.ant-pagination-simple .ant-pagination-prev,
+.ant-pagination-simple .ant-pagination-next {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-pagination-simple .ant-pagination-simple-pager input {
+  border: 1px solid #1890ff;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Filtros */
+.admin-filters {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+/* Botones */
+.ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  border-radius: 6px;
+  font-weight: 500;
+  height: 36px;
+  padding: 0 16px;
+}
+
+.ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+.ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  height: 36px;
+  padding: 0 16px;
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Switches */
+.ant-switch-checked {
+  background-color: #52c41a;
+}
+
+.ant-switch {
+  border-radius: 12px;
+}
+
+/* Tags */
+.ant-tag {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: none;
+  font-size: 12px;
+}
+
+/* Avatares */
+.ant-avatar {
+  border: 2px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas */
+.ant-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+  padding: 16px 24px;
+}
+
+.ant-card-head-title {
+  font-weight: 600;
+  color: #262626;
+  font-size: 16px;
+}
+
+.ant-card-body {
+  padding: 24px;
+}
+
+/* Inputs y Selects */
+.ant-input, .ant-select-selector {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+.ant-input:focus, .ant-select-focused .ant-select-selector {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ant-input-search .ant-input {
+  border-radius: 6px 0 0 6px;
+}
+
+.ant-input-search .ant-input-search-button {
+  border-radius: 0 6px 6px 0;
+  height: 32px;
+}
+
+/* Modales */
+.ant-modal-header {
+  border-bottom: 2px solid #1890ff;
+  background: #fafafa;
+  border-radius: 12px 12px 0 0;
+}
+
+.ant-modal-title {
+  color: #1890ff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.ant-modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ant-modal-body {
+  padding: 24px;
+}
+
+/* Formularios */
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #262626;
+}
+
+.ant-form-item {
+  margin-bottom: 24px;
+}
+
+.ant-form-item-control-input {
+  min-height: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-module {
+    padding: 16px;
+  }
+  
+  .page-header {
+    padding: 24px 16px;
+  }
+  
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .ant-card-body {
+    padding: 16px;
+  }
+  
+  .admin-filters .ant-col {
+    margin-bottom: 16px;
+  }
+}
+
+/* Estados de hover y focus */
+.ant-table-tbody > tr:hover > td {
+  background: #f0f7ff !important;
+}
+
+.ant-btn:focus {
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* Paginación */
+.ant-pagination-item {
+  border-radius: 6px;
+}
+
+.ant-pagination-item-active {
+  border-color: #1890ff;
+  background: #1890ff;
+}
+
+.ant-pagination-item-active a {
+  color: white;
+}
+
+/* Tooltips */
+.ant-tooltip-inner {
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* Mensajes */
+.ant-message-notice-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

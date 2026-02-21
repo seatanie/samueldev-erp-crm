@@ -1,5 +1,4 @@
 import { Space, Layout, Divider, Typography } from 'antd';
-import logo from '@/style/images/idurar-crm-erp.svg';
 import useLanguage from '@/locale/useLanguage';
 import { useSelector } from 'react-redux';
 
@@ -12,30 +11,43 @@ export default function SideContent() {
   return (
     <Content
       style={{
-        padding: '150px 30px 30px',
+        padding: '20px',
         width: '100%',
-        maxWidth: '450px',
-        margin: '0 auto',
+        maxWidth: '100%',
+        margin: '0',
+        background: '#f5f5f5',
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
       className="sideContent"
     >
-      <div style={{ width: '100%' }}>
-        <img
-          src={logo}
-          alt="IDURAR ERP CRM"
-          style={{ margin: '0 0 40px', display: 'block' }}
-          height={63}
-          width={220}
-        />
-
-        <Title level={1} style={{ fontSize: 28 }}>
-          Free Open Source ERP / CRM
+      <div style={{ 
+        textAlign: 'center',
+        padding: '40px',
+        background: '#fff',
+        borderRadius: '12px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        maxWidth: '300px',
+        width: '100%'
+      }}>
+        <Title level={2} style={{ 
+          fontSize: '20px', 
+          fontWeight: '600', 
+          color: '#333',
+          marginBottom: '16px'
+        }}>
+          MV
         </Title>
-        <Text>
-          Accounting / Invoicing / Quote App <b /> based on Node.js React.js Ant Design
+        <Text style={{ 
+          color: '#666', 
+          fontSize: '14px',
+          lineHeight: '1.5'
+        }}>
+          Sistema de Gestión Empresarial
         </Text>
-
-        <div className="space20"></div>
       </div>
     </Content>
   );

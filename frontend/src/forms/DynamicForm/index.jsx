@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { DatePicker, Input, Form, Select, InputNumber, Switch, Tag } from 'antd';
+import { DatePicker, Input, Form, Select, InputNumber, Switch, Tag, ColorPicker, Upload } from 'antd';
 
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import { CloseOutlined, CheckOutlined, UploadOutlined } from '@ant-design/icons';
 import useLanguage from '@/locale/useLanguage';
 import { useMoney, useDate } from '@/settings';
 import AutoCompleteAsync from '@/components/AutoCompleteAsync';
@@ -138,31 +138,89 @@ function FormElement({ field, feedback, setFeedback }) {
         },
       ]}
     >
-      <Select
-        showSearch
-        defaultValue={field.defaultValue}
-        filterOption={(input, option) =>
-          (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-        }
-        filterSort={(optionA, optionB) =>
-          (optionA?.label ?? '').toLowerCase().startsWith((optionB?.label ?? '').toLowerCase())
-        }
-        style={{
-          width: '100%',
-        }}
-      >
-        {field.options?.map((option) => {
-          return (
-            <Select.Option key={`${uniqueId()}`} value={option.value} label={option.label}>
-              <Tag bordered={false} color={option.color}>
-                {option.label}
-              </Tag>
-            </Select.Option>
-          );
-        })}
-      </Select>
+      <ColorPicker
+        defaultValue={field.defaultValue || '#1890ff'}
+        presets={[
+          {
+            label: 'Colores Recomendados',
+            colors: [
+              '#1890ff', '#52c41a', '#722ed1', '#fa8c16', '#f5222d',
+              '#13c2c2', '#eb2f96', '#faad14', '#a0d911', '#2f54eb',
+              '#722ed1', '#fa541c', '#52c41a', '#1890ff', '#fa8c16',
+              '#f5222d', '#13c2c2', '#eb2f96', '#faad14', '#a0d911'
+            ]
+          }
+        ]}
+        showText
+        format="hex"
+        style={{ width: '100%' }}
+      />
     </Form.Item>
   );
+
+  const UploadComponent = () => (
+    <Form.Item
+      label={translate(field.label)}
+      name={field.name}
+      rules={[
+        {
+          required: field.required || false,
+          type: filedType[field.type] ?? 'any',
+        },
+      ]}
+    >
+      <Upload
+        name="file"
+        listType="picture-card"
+        maxCount={field.maxCount || 1}
+        accept={field.accept || 'image/*'}
+        beforeUpload={() => false} // Prevenir subida automática
+        onChange={(info) => {
+          if (info.fileList.length > 0) {
+            const file = info.fileList[0].originFileObj;
+            if (file) {
+              // Convertir a base64 para almacenar
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                // Aquí podrías actualizar el valor del formulario
+                // Por ahora solo mostramos el archivo seleccionado
+              };
+              reader.readAsDataURL(file);
+            }
+          }
+        }}
+      >
+        <div>
+          <UploadOutlined />
+          <div style={{ marginTop: 8 }}>Subir imagen</div>
+        </div>
+      </Upload>
+    </Form.Item>
+  );
+
+  const SelectAsyncComponent = () => (
+    <Form.Item
+      label={translate(field.label)}
+      name={field.name}
+      rules={[
+        {
+          required: field.required || false,
+          type: filedType[field.type] ?? 'any',
+        },
+      ]}
+    >
+      <SelectAsync
+        entity={field.entity}
+        displayLabels={field.displayLabels}
+        outputValue={field.outputValue}
+        loadDefault={field.loadDefault}
+        withRedirect={field.withRedirect}
+        urlToRedirect={field.urlToRedirect}
+        redirectLabel={field.redirectLabel}
+      />
+    </Form.Item>
+  );
+
   const TagComponent = () => (
     <Form.Item
       label={translate(field.label)}
@@ -287,16 +345,24 @@ function FormElement({ field, feedback, setFeedback }) {
       <SelectWithFeedbackComponent lanchFeedback={setFeedback} feedbackValue={feedback} />
     ),
     color: <ColorComponent />,
-
+    upload: <UploadComponent />,
     tag: <TagComponent />,
     array: <ArrayComponent />,
     country: <CountryComponent />,
     search: <SearchComponent />,
+    async: <SelectAsyncComponent />,
   };
 
   const compunedComponent = {
     string: (
       <Input autoComplete="off" maxLength={field.maxLength} defaultValue={field.defaultValue} />
+    ),
+    password: (
+      <Input.Password 
+        autoComplete="new-password" 
+        placeholder={field.placeholder || "Ingrese la contraseña"}
+        defaultValue={field.defaultValue}
+      />
     ),
     url: <Input addonBefore="http://" autoComplete="off" placeholder="www.example.com" />,
     textarea: <TextArea rows={4} />,

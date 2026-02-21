@@ -11,8 +11,8 @@ export default function AuthLayout({ sideContent, children }) {
         <Col
           xs={{ span: 0, order: 2 }}
           sm={{ span: 0, order: 2 }}
-          md={{ span: 11, order: 1 }}
-          lg={{ span: 12, order: 1 }}
+          md={{ span: 14, order: 1 }}
+          lg={{ span: 16, order: 1 }}
           style={{
             minHeight: '100vh',
           }}
@@ -22,8 +22,8 @@ export default function AuthLayout({ sideContent, children }) {
         <Col
           xs={{ span: 24, order: 1 }}
           sm={{ span: 24, order: 1 }}
-          md={{ span: 13, order: 2 }}
-          lg={{ span: 12, order: 2 }}
+          md={{ span: 10, order: 2 }}
+          lg={{ span: 8, order: 2 }}
           style={{ background: '#FFF', minHeight: '100vh' }}
         >
           {children}

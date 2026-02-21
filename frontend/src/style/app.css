@@ -2,10 +2,19 @@
 @import './partials/customAntd.css';
 @import './partials/layout.css';
 @import './partials/core.css';
+@import './partials/details.css';
 
 @import './partials/auth.css';
 @import './partials/navigation.css';
+@import './partials/admin-module.css';
+@import './partials/reports-module.css';
 @import './partials/header.css';
 @import './partials/sidePanel.css';
 @import './partials/collapseBox.css';
 @import './partials/erp.css';
+
+/* Importar estilos del selector de idioma */
+@import './language-switcher.css';
+
+
+

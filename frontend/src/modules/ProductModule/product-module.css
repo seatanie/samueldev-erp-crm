@@ -1,0 +1,32 @@
+/* Estilos para quitar el scroll del panel lateral de productos */
+.ant-layout-sider {
+  overflow: visible !important;
+}
+
+.ant-layout-sider .ant-layout-sider-children {
+  overflow: visible !important;
+}
+
+/* Quitar scroll del panel lateral */
+.side-panel {
+  overflow: visible !important;
+}
+
+.side-panel .ant-layout-content {
+  overflow: visible !important;
+}
+
+/* Asegurar que el contenido del panel no tenga scroll */
+.ant-drawer-body {
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+/* Quitar scroll del contenido del panel */
+.ant-drawer-content-wrapper {
+  overflow: visible !important;
+}
+
+.ant-drawer-content {
+  overflow: visible !important;
+}

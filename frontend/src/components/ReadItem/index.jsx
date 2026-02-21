@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Card, Typography, Divider, Descriptions } from 'antd';
 import { useSelector } from 'react-redux';
 
 import dayjs from 'dayjs';
@@ -12,6 +12,8 @@ import { valueByString } from '@/utils/helpers';
 import useLanguage from '@/locale/useLanguage';
 import { useDate } from '@/settings';
 
+const { Title, Text } = Typography;
+
 export default function ReadItem({ config }) {
   const { dateFormat } = useDate();
   let { readColumns, fields } = config;
@@ -22,6 +24,7 @@ export default function ReadItem({ config }) {
   const [listState, setListState] = useState([]);
 
   if (fields) readColumns = [...dataForRead({ fields: fields, translate: translate })];
+  
   useEffect(() => {
     const list = [];
     readColumns.map((props) => {
@@ -37,21 +40,58 @@ export default function ReadItem({ config }) {
 
   const show = isReadBoxOpen ? { display: 'block', opacity: 1 } : { display: 'none', opacity: 0 };
 
-  const itemsList = listState.map((item) => {
-    return (
-      <Row key={item.propsKey} gutter={12}>
-        <Col className="gutter-row" span={8}>
-          <p>{item.label}</p>
-        </Col>
-        <Col className="gutter-row" span={2}>
-          <p> : </p>
-        </Col>
-        <Col className="gutter-row" span={14}>
-          <p>{item.value}</p>
-        </Col>
-      </Row>
-    );
-  });
-
-  return <div style={show}>{itemsList}</div>;
+  return (
+    <div style={show}>
+      <Card 
+        style={{ 
+          margin: '16px',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+        }}
+      >
+        <Title level={4} style={{ 
+          marginBottom: '24px', 
+          color: '#262626',
+          fontWeight: '500',
+          borderBottom: '1px solid #f0f0f0',
+          paddingBottom: '12px'
+        }}>
+          Detalles
+        </Title>
+        
+        <Descriptions 
+          column={1} 
+          size="middle"
+          labelStyle={{
+            fontWeight: '600',
+            color: '#595959',
+            fontSize: '14px',
+            minWidth: '120px'
+          }}
+          contentStyle={{
+            color: '#262626',
+            fontSize: '14px'
+          }}
+        >
+          {listState.map((item) => (
+            <Descriptions.Item 
+              key={item.propsKey} 
+              label={item.label}
+              style={{
+                paddingBottom: '16px',
+                borderBottom: '1px solid #fafafa'
+              }}
+            >
+              <Text style={{ 
+                color: '#262626',
+                fontSize: '14px'
+              }}>
+                {item.value || 'N/A'}
+              </Text>
+            </Descriptions.Item>
+          ))}
+        </Descriptions>
+      </Card>
+    </div>
+  );
 }

@@ -1,0 +1,163 @@
+/* Página de Movimientos */
+.movements-page {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Tabla */
+.movements-page .ant-table {
+  background: white;
+  border-radius: 8px;
+}
+
+.movements-page .ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+  color: #262626;
+}
+
+.movements-page .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+/* Tags */
+.movements-page .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+/* Botones */
+.movements-page .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.movements-page .ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.2);
+}
+
+.movements-page .ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.3);
+}
+
+/* Filtros */
+.movements-page .ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Formularios */
+.movements-page .ant-input,
+.movements-page .ant-select-selector,
+.movements-page .ant-picker {
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+}
+
+.movements-page .ant-input:focus,
+.movements-page .ant-select-focused .ant-select-selector,
+.movements-page .ant-picker-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .movements-page {
+    padding: 16px;
+  }
+
+  .movements-page .ant-table {
+    font-size: 12px;
+  }
+
+  .movements-page .ant-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .movements-page .ant-table-thead > tr > th,
+  .movements-page .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+  }
+}
+
+@media (max-width: 576px) {
+  .movements-page {
+    padding: 12px;
+  }
+
+  .movements-page .ant-page-header {
+    padding: 16px 0;
+  }
+
+  .movements-page .ant-page-header-heading-title {
+    font-size: 18px;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movements-page .ant-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Efectos hover */
+.movements-page .ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.movements-page .ant-btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Colores para tipos de movimiento */
+.movement-in {
+  color: #52c41a;
+  font-weight: bold;
+}
+
+.movement-out {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.movement-adjustment {
+  color: #1890ff;
+  font-weight: bold;
+}
+
+.movement-reserve {
+  color: #faad14;
+  font-weight: bold;
+}
+
+.movement-unreserve {
+  color: #722ed1;
+  font-weight: bold;
+}
+
+.movement-transfer {
+  color: #13c2c2;
+  font-weight: bold;
+}

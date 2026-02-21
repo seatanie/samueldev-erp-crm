@@ -1,50 +1,29 @@
+import languages from "./translation/translation";
+
+const DEFAULT_LANG = "es_es"; 
+
 const getLabel = (key) => {
   try {
+    const currentLang =
+      localStorage.getItem("currentLang") || DEFAULT_LANG;
+
+    const lang = languages[currentLang] || {};
     const lowerCaseKey = key
       .toLowerCase()
-      .replace(/[^a-zA-Z0-9]/g, '_')
-      .replace(/ /g, '_');
+      .replace(/[^a-zA-Z0-9]/g, "_")
+      .replace(/ /g, "_");
 
-    // if (lang[lowerCaseKey]) return lang[lowerCaseKey];
+    // Si existe en el diccionario, devuelve traducción
+    if (lang[lowerCaseKey]) return lang[lowerCaseKey];
 
-    // convert no found language label key to label
-
-    const remove_underscore_fromKey = key.replace(/_/g, ' ').split(' ');
-
-    const conversionOfAllFirstCharacterofEachWord = remove_underscore_fromKey.map(
+    // Fallback: genera un label bonito
+    const removeUnderscore = key.replace(/_/g, " ").split(" ");
+    const converted = removeUnderscore.map(
       (word) => word[0].toUpperCase() + word.substring(1)
     );
-
-    const label = conversionOfAllFirstCharacterofEachWord.join(' ');
-
-    const result = window.localStorage.getItem('lang');
-    if (!result) {
-      let list = {};
-      list[lowerCaseKey] = label;
-      window.localStorage.setItem('lang', JSON.stringify(list));
-    } else {
-      let list = { ...JSON.parse(result) };
-      list[lowerCaseKey] = label;
-      window.localStorage.removeItem('lang');
-      window.localStorage.setItem('lang', JSON.stringify(list));
-    }
-    // console.error(
-    //   '🇩🇿 🇧🇷 🇻🇳 🇮🇩 🇨🇳 Language Label Warning : translate("' +
-    //     lowerCaseKey +
-    //     '") failed to get label for this key : ' +
-    //     lowerCaseKey +
-    //     ' please review your language config file and add this label'
-    // );
-    return label;
+    return converted.join(" ");
   } catch (error) {
-    // console.error(
-    //   '🚨 error getting this label : translate("' +
-    //     key +
-    //     '") failed to get label for this key : ' +
-    //     key +
-    //     ' please review your language config file and add this label'
-    // );
-    return 'No translate';
+    return "No translate";
   }
 };
 
@@ -55,3 +34,7 @@ const useLanguage = () => {
 };
 
 export default useLanguage;
+
+export const setAppLanguage = (code) => {
+  window.localStorage.setItem("currentLang", code);
+};

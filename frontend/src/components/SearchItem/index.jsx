@@ -40,7 +40,14 @@ function SearchItemComponent({ config, onRerender }) {
   );
 
   const labels = (optionField) => {
-    return displayLabels.map((x) => optionField[x]).join(' ');
+    return displayLabels.map((x) => {
+      const value = optionField[x];
+      // Si el valor es un objeto, extraer el nombre o convertir a string
+      if (value && typeof value === 'object') {
+        return value.name || value.toString();
+      }
+      return value || '';
+    }).join(' ');
   };
 
   useEffect(() => {

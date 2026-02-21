@@ -24,10 +24,23 @@ const PaymentUpdate = lazy(() => import('@/pages/Payment/PaymentUpdate'));
 const Settings = lazy(() => import('@/pages/Settings/Settings'));
 const PaymentMode = lazy(() => import('@/pages/PaymentMode'));
 const Taxes = lazy(() => import('@/pages/Taxes'));
+const Admin = lazy(() => import('@/pages/Admin'));
+const Reports = lazy(() => import('@/modules/ReportsModule'));
+
+const ProductCategories = lazy(() => import('@/pages/ProductCategory'));
+const Products = lazy(() => import('@/pages/Product'));
+const Orders = lazy(() => import('@/pages/Order'));
+
 
 const Profile = lazy(() => import('@/pages/Profile'));
 
 const About = lazy(() => import('@/pages/About'));
+
+// Páginas de Inventario
+const Inventory = lazy(() => import('@/pages/Inventory'));
+const InventoryDashboard = lazy(() => import('@/pages/Inventory/Dashboard'));
+const InventoryMovements = lazy(() => import('@/pages/Inventory/Movements'));
+const Warehouse = lazy(() => import('@/pages/Warehouse'));
 
 let routes = {
   expense: [],
@@ -70,7 +83,7 @@ let routes = {
       element: <InvoiceUpdate />,
     },
     {
-      path: '/invoice/pay/:id',
+      path: '/invoice/record-payment/:id',
       element: <InvoiceRecordPayment />,
     },
     {
@@ -101,15 +114,6 @@ let routes = {
       path: '/payment/update/:id',
       element: <PaymentUpdate />,
     },
-
-    {
-      path: '/settings',
-      element: <Settings />,
-    },
-    {
-      path: '/settings/edit/:settingsKey',
-      element: <Settings />,
-    },
     {
       path: '/payment/mode',
       element: <PaymentMode />,
@@ -118,10 +122,50 @@ let routes = {
       path: '/taxes',
       element: <Taxes />,
     },
+    {
+      path: '/admin',
+      element: <Admin />,
+    },
+    {
+      path: '/reports',
+      element: <Reports />,
+    },
+    {
+      path: '/product-categories',
+      element: <ProductCategories />,
+    },
+    {
+      path: '/products',
+      element: <Products />,
+    },
+    {
+      path: '/orders',
+      element: <Orders />,
+    },
 
+    {
+      path: '/settings',
+      element: <Settings />,
+    },
     {
       path: '/profile',
       element: <Profile />,
+    },
+    {
+      path: '/inventory',
+      element: <Inventory />,
+    },
+    {
+      path: '/inventory/dashboard',
+      element: <InventoryDashboard />,
+    },
+    {
+      path: '/inventory/movements',
+      element: <InventoryMovements />,
+    },
+    {
+      path: '/warehouses',
+      element: <Warehouse />,
     },
     {
       path: '*',
@@ -130,4 +174,5 @@ let routes = {
   ],
 };
 
+export { routes };
 export default routes;

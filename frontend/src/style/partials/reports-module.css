@@ -1,0 +1,111 @@
+/* Estilos para el módulo de informes */
+.reports-module {
+  background-color: #f5f5f5;
+}
+
+.main-title {
+  color: #1890ff !important;
+  font-weight: 600 !important;
+}
+
+/* Tarjetas de filtros */
+.filters-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.filters-card .ant-card-body {
+  padding: 24px;
+}
+
+.filters-card .ant-typography {
+  margin-bottom: 0;
+}
+
+/* Tarjetas de resumen */
+.summary-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important;
+}
+
+.summary-card .ant-card-body {
+  padding: 20px;
+}
+
+/* Gráfico */
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.chart-container .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 24px;
+}
+
+.chart-container .ant-card-body {
+  padding: 24px;
+}
+
+.bar-chart {
+  height: 400px;
+}
+
+/* Grid de estadísticas */
+.stats-grid {
+  margin-bottom: 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters-card .ant-card-body {
+    padding: 16px;
+  }
+  
+  .summary-card .ant-card-body {
+    padding: 16px;
+  }
+  
+  .chart-container .ant-card-body {
+    padding: 16px;
+  }
+  
+  .bar-chart {
+    height: 300px;
+  }
+}
+
+/* Estilos para los filtros */
+.filters-card .ant-select {
+  margin-bottom: 8px;
+}
+
+.filters-card .ant-typography-strong {
+  color: #262626;
+  font-weight: 600;
+}
+
+/* Botones de acción */
+.filters-card .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.filters-card .ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.filters-card .ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+}

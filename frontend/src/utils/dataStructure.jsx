@@ -76,9 +76,15 @@ export function dataForTable({ fields, translate, moneyFormatter, dateFormat }) 
         title: field.label ? translate(field.label) : translate(key),
         dataIndex: keyIndex,
         render: (text, record) => {
+          // Si text es un objeto, extraer el nombre o convertir a string
+          let displayText = text;
+          if (text && typeof text === 'object') {
+            displayText = text.name || text.label || text.toString();
+          }
+          
           return (
             <Tag bordered={false} color={field.color || record[key]?.color || record.color}>
-              {text}
+              {displayText}
             </Tag>
           );
         },
@@ -191,6 +197,13 @@ export function dataForTable({ fields, translate, moneyFormatter, dateFormat }) 
     const defaultComponent = {
       title: field.label ? translate(field.label) : translate(key),
       dataIndex: keyIndex,
+      render: (text, record) => {
+        // Si el valor es un objeto, extraer el nombre o convertir a string
+        if (text && typeof text === 'object') {
+          return text.name || text.label || JSON.stringify(text);
+        }
+        return text;
+      },
     };
 
     const type = field.type;
