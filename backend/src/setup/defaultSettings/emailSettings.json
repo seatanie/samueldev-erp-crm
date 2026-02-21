@@ -1,0 +1,32 @@
+[
+  {
+    "settingCategory": "email_settings",
+    "settingKey": "samueldev_app_email",
+    "settingValue": "noreply@samueldev.com",
+    "valueType": "string"
+  },
+  {
+    "settingCategory": "email_settings",
+    "settingKey": "samueldev_app_name",
+    "settingValue": "Samuel Dev ERP CRM",
+    "valueType": "string"
+  },
+  {
+    "settingCategory": "email_settings",
+    "settingKey": "invoice_email_subject",
+    "settingValue": "Factura #{number}/{year} - {company_name}",
+    "valueType": "string"
+  },
+  {
+    "settingCategory": "email_settings",
+    "settingKey": "invoice_email_template",
+    "settingValue": "default",
+    "valueType": "string"
+  },
+  {
+    "settingCategory": "email_settings",
+    "settingKey": "enable_invoice_emails",
+    "settingValue": "true",
+    "valueType": "boolean"
+  }
+]

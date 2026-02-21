@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const checkAndCorrectURL = require('./checkAndCorrectURL');
 const sendMail = require('./sendMail');
 const shortid = require('shortid');
-const { loadSettings } = require('@/middlewares/settings');
+const { loadSettings } = require('../../../middlewares/settings');
 
-const { useAppSettings } = require('@/settings');
+const { useAppSettings } = require('../../../settings');
 
 const forgetPassword = async (req, res, { userModel }) => {
   const UserPassword = mongoose.model(userModel + 'Password');
@@ -53,10 +53,10 @@ const forgetPassword = async (req, res, { userModel }) => {
   ).exec();
 
   const settings = useAppSettings();
-  const idurar_app_email = settings['idurar_app_email'];
-  const idurar_base_url = settings['idurar_base_url'];
+  const samueldev_app_email = settings['samueldev_app_email'];
+  const samueldev_base_url = settings['samueldev_base_url'];
 
-  const url = checkAndCorrectURL(idurar_base_url);
+  const url = checkAndCorrectURL(samueldev_base_url);
 
   const link = url + '/resetpassword/' + user._id + '/' + resetToken;
 
@@ -64,8 +64,8 @@ const forgetPassword = async (req, res, { userModel }) => {
     email,
     name: user.name,
     link,
-    subject: 'Reset your password | idurar',
-    idurar_app_email,
+    subject: 'Reset your password | Samuel Dev',
+    samueldev_app_email,
     type: 'passwordVerfication',
   });
 

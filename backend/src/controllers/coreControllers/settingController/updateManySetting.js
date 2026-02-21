@@ -16,10 +16,30 @@ const updateManySetting = async (req, res) => {
 
     const { settingKey, settingValue } = setting;
 
+    // Determinar el settingCategory basado en el settingKey
+    let settingCategory = 'app_settings'; // default
+    
+    if (settingKey.startsWith('pdf_')) {
+      settingCategory = 'pdf_settings';
+    } else if (settingKey.startsWith('company_')) {
+      settingCategory = 'company_settings';
+    } else if (settingKey.startsWith('finance_')) {
+      settingCategory = 'finance_settings';
+    } else if (settingKey.startsWith('crm_')) {
+      settingCategory = 'crm_settings';
+    } else if (settingKey.startsWith('money_') || settingKey.startsWith('currency_')) {
+      settingCategory = 'money_format_settings';
+    }
+
     updateDataArray.push({
       updateOne: {
         filter: { settingKey: settingKey },
-        update: { settingValue: settingValue },
+        update: { 
+          settingValue: settingValue,
+          settingCategory: settingCategory,
+          updated: new Date()
+        },
+        upsert: true // Crear si no existe
       },
     });
   }
@@ -38,6 +58,7 @@ const updateManySetting = async (req, res) => {
       message: 'Settings provided has Error',
     });
   }
+  
   const result = await Model.bulkWrite(updateDataArray);
 
   if (!result || result.nMatched < 1) {

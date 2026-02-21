@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const logout = async (req, res, { userModel }) => {
   const UserPassword = mongoose.model(userModel + 'Password');
 
-  // const token = req.cookies[`token_${cloud._id}`];
-
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Extract the token
+  // Leer token desde cookie httpOnly o header Authorization
+  let token = req.cookies.authToken; // Cookie httpOnly
+  
+  if (!token) {
+    const authHeader = req.headers['authorization'];
+    token = authHeader && authHeader.split(' ')[1];
+  }
 
   if (token)
     await UserPassword.findOneAndUpdate(
@@ -24,6 +27,14 @@ const logout = async (req, res, { userModel }) => {
         new: true,
       }
     ).exec();
+
+  // Limpiar cookie de autenticación
+  res.clearCookie('authToken', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+  });
 
   return res.json({
     success: true,

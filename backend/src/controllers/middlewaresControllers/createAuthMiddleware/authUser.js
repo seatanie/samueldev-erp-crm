@@ -28,15 +28,17 @@ const authUser = async (req, res, { user, databasePassword, password, UserPasswo
       }
     ).exec();
 
-    // .cookie(`token_${user.cloud}`, token, {
-    //     maxAge: req.body.remember ? 365 * 24 * 60 * 60 * 1000 : null,
-    //     sameSite: 'None',
-    //     httpOnly: true,
-    //     secure: true,
-    //     domain: req.hostname,
-    //     path: '/',
-    //     Partitioned: true,
-    //   })
+    // Configurar cookie httpOnly segura
+    const cookieOptions = {
+      maxAge: req.body.remember ? 365 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000, // 365 días o 24 horas
+      httpOnly: true, // No accesible desde JavaScript
+      secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
+      sameSite: 'strict', // Protección CSRF
+      path: '/',
+    };
+
+    res.cookie('authToken', token, cookieOptions);
+    
     res.status(200).json({
       success: true,
       result: {
@@ -46,7 +48,7 @@ const authUser = async (req, res, { user, databasePassword, password, UserPasswo
         role: user.role,
         email: user.email,
         photo: user.photo,
-        token: token,
+        // No enviar token en la respuesta JSON
         maxAge: req.body.remember ? 365 : null,
       },
       message: 'Successfully login user',

@@ -112,5 +112,65 @@
     "setupKey": "idurar_load_demo_data",
     "setupValue": false,
     "valueType": "boolean"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_enabled",
+    "setupValue": false,
+    "valueType": "boolean"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_base_url",
+    "setupValue": "https://api-sandbox.factus.com.co",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_client_id",
+    "setupValue": "",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_client_secret",
+    "setupValue": "",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_username",
+    "setupValue": "",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_password",
+    "setupValue": "",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_environment",
+    "setupValue": "sandbox",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_auto_send",
+    "setupValue": false,
+    "valueType": "boolean"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_series",
+    "setupValue": "A",
+    "valueType": "string"
+  },
+  {
+    "setupCategory": "factus_config",
+    "setupKey": "factus_regime",
+    "setupValue": "Responsable de IVA",
+    "valueType": "string"
   }
 ]
