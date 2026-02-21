@@ -1,6 +1,11 @@
 const fileFilter =
   (type = 'default') =>
   (req, file, cb) => {
+    console.log('=== FILE FILTER DEBUG ===');
+    console.log('file.mimetype:', file.mimetype);
+    console.log('file.originalname:', file.originalname);
+    console.log('filter type:', type);
+    
     // array containing all the possible file types
     const _fileType = [
       'image/jpeg',
@@ -23,6 +28,7 @@ const fileFilter =
     ];
 
     if (type === 'default') {
+      console.log('Tipo default - aceptando archivo');
       return cb(null, true);
     } else {
       let _flag = _fileType.includes(file.mimetype);
@@ -73,9 +79,13 @@ const fileFilter =
         }
       }
 
+      console.log('Flag result:', _flag);
+
       if (_flag) {
+        console.log('Archivo aceptado por el filtro');
         return cb(null, true);
       } else {
+        console.log('Archivo rechazado por el filtro:', file.mimetype);
         return cb(new Error(`${file.mimetype} File type not supported!`));
       }
     }
