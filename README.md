@@ -1,100 +1,185 @@
-<div align="center">
-    <a href="https://www.idurarapp.com/">
-  <img src="https://avatars.githubusercontent.com/u/50052356?s=200&v=4" width="128px" />
-    </a>
-    <h1>Open Source ERP / CRM Accounting Invoice Quote</h1>
-    <p align="center">
-        <p>IDURAR ERP CRM | Simple To Use</p>
-    </p>
-    
+# Samuel Dev ERP CRM
+
+Sistema ERP/CRM de código abierto basado en [Idurar ERP CRM](https://github.com/idurar/idurar-erp-crm-open-source), ampliado con módulos de facturación electrónica, pagos en línea, inventario, pedidos, zonas de entrega y mejoras de seguridad e infraestructura.
+
+**Versión:** 4.1.0  
+**Licencia:** Fair-code License
+
+---
+
+## Stack técnico
+
+- **Backend:** Node.js, Express, MongoDB (Mongoose)
+- **Frontend:** React 18, Vite, Redux Toolkit, Ant Design 5
+- **Despliegue:** Docker Compose (backend y frontend)
+
+---
+
+## Características base (Idurar)
+
+- Gestión de clientes, proveedores y contactos
+- Facturas, cotizaciones y ofertas
+- Productos y categorías
+- Autenticación y sesiones de administrador
+- Panel de administración y reportes
+- Generación de PDF (facturas, cotizaciones, ofertas, pagos)
+- Configuración por entornos y variables de entorno
+
+---
+
+## Adiciones y mejoras implementadas
+
+### Facturación electrónica (FACTUS)
+
+- Integración con [FACTUS](https://factus.com.co/) para facturación electrónica en Colombia.
+- **Solo entorno sandbox:** la integración está configurada para ambiente de pruebas; no está desplegada en producción.
+- Creación, validación y anulación de facturas electrónicas desde el ERP.
+- Descarga de PDF y XML de facturas emitidas en FACTUS.
+- Endpoints para datos maestros: municipios, países, tributos, unidades de medida.
+- Validación de configuración y rangos de numeración.
+
+### Pagos en línea (ePayco)
+
+- Integración con [ePayco](https://epayco.co/) para cobro en línea.
+- **Solo entorno sandbox:** la integración está configurada para ambiente de pruebas; no está desplegada en producción.
+- Generación de enlaces de pago directos por factura.
+- Webhooks para confirmación de pagos y actualización del estado de la factura.
+- Inclusión de botón de pago en el correo de envío de factura al cliente.
+
+### Envío de facturas por correo
+
+- Envío de facturas por email con PDF adjunto mediante [Resend](https://resend.com).
+- Plantilla HTML con datos de la factura, totales y enlace/botón de pago ePayco cuando aplique.
+- Configuración de remitente y nombre de app desde ajustes (`samueldev_app_email`, `samueldev_app_name`).
+
+### Pedidos y órdenes
+
+- Módulo de pedidos/órdenes con API REST (`/api/orders`, `/api/order`).
+- Gestión de estados y relación con clientes y productos.
+
+### Zonas de entrega
+
+- CRUD de zonas de entrega para envíos o cobertura de servicio.
+- API bajo `/api/zones` con autenticación.
+
+### Inventario y bodegas
+
+- Módulo de bodegas (almacenes) con API `/api/warehouses`.
+- Módulo de inventario con API `/api/inventory`.
+- Middlewares para generación de números únicos y lógica de inventario.
+
+### Logos personalizados
+
+- Subida de logos para uso en PDF y cabeceras.
+- API `/api/logos` con almacenamiento local o S3 (según configuración).
+- Exclusión de la ruta de logos del middleware genérico de file upload para evitar conflictos.
+
+### Restablecimiento de contraseña
+
+- Flujo de recuperación de contraseña vía correo.
+- Rutas bajo `/api/password-reset` (sin autenticación para solicitud y uso del token).
+
+### Estadísticas de usuario
+
+- API `/api/user-stats` para métricas y resúmenes del usuario autenticado.
+
+### Seguridad y robustez
+
+- **Helmet:** cabeceras de seguridad (CSP, XSS, etc.) con opciones adaptadas a subida de archivos.
+- **Rate limiting:** límite general por IP y límite específico para login (evitar fuerza bruta).
+- **CORS:** orígenes permitidos configurables (`FRONTEND_URL` y localhost).
+- **Validación de entorno:** middleware que comprueba variables de entorno críticas antes de servir rutas.
+- **Logger:** utilidad centralizada de logs para desarrollo y producción.
+
+### Reportes y productos
+
+- APIs de reportes (`/api/reports`).
+- APIs de categorías de producto y productos (`/api/product-categories`, `/api/products`, variantes singular).
+- Descarga de archivos estáticos y descarga controlada de PDFs desde `/download`.
+
+### Configuración y ajustes
+
+- Ajustes por categoría: `app_settings`, `pdf_settings`.
+- Claves propias para marca y PDF: `samueldev_app_name`, `samueldev_app_email`, `samueldev_app_date_format`, `pdf_invoice_footer`, `pdf_quote_footer`, `pdf_offer_footer`, `pdf_payment_footer`.
+- Carga y uso de ajustes en middlewares y controladores (emails, nombres, pies de página en PDF).
+
+### Infraestructura y despliegue
+
+- **Docker Compose:** servicios `backend` (puerto 8889) y `frontend` (puerto 3001) con volúmenes para desarrollo.
+- **Almacenamiento:** soporte para subida a AWS S3 además de almacenamiento local.
+- **PDF:** generación con Puppeteer y plantillas Pug (Invoice, Quote, Offer, Payment).
+- **Email:** Resend como proveedor principal de envío de correos.
+
+### Frontend
+
+- Aplicación principal unificada en `ErpApp.jsx` (layout, navegación, header, router).
+- Configuración de API y servidor centralizada.
+- Formularios dinámicos, autocompletado asíncrono y componentes reutilizables (ReadItem, SearchItem, SelectAsync).
+- Autenticación y persistencia de sesión; layout de auth para login y flujos de recuperación de contraseña.
+- Eliminación de flujos no usados (registro público, OrderForm antiguo) y referencias a IdurarOS donde corresponda.
+
+---
+
+## Requisitos
+
+- Node.js 20.x (indicado en `package.json` de backend y frontend)
+- MongoDB
+- Cuentas/API keys (según uso): Resend, ePayco (sandbox), FACTUS (sandbox), AWS S3 (opcional)
+
+---
+
+## Instalación y ejecución
+
+### Con Docker
+
+```bash
+# En la raíz del proyecto
+docker-compose up --build
+```
+
+- Backend: `http://localhost:8889`
+- Frontend: `http://localhost:3001`
+
+### Sin Docker
+
+1. **Backend:**  
+   En `backend/`: copiar `.env.example` a `.env`, configurar MongoDB, Resend, ePayco/FACTUS si aplica, y ejecutar `npm install` y `npm run dev`.
+
+2. **Frontend:**  
+   En `frontend/`: configurar `.env` (por ejemplo `VITE_SERVER_URL` apuntando al backend) y ejecutar `npm install` y `npm run dev`.
+
+---
+
+## Estructura relevante del proyecto
 
 ```
- Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩`
+backend/src/
+  app.js                    # Entrada Express, rutas, middlewares de seguridad
+  routes/
+    appRoutes/              # appApi, orderApi, zoneRoutes, epaycoRoutes, factusRoutes
+    coreRoutes/             # coreAuth, coreApi, reports, products, inventory, warehouses,
+                            # logoUpload, passwordReset, userStats, download, public
+  controllers/
+    appControllers/         # invoiceController (create, read, sendMail), factusController, paymentController (epayco)
+    coreControllers/        # adminAuth, adminController, settingController, setup
+  services/                 # factusService, epaycoService, emailService, awsS3Service, puppeteerConfig
+  middlewares/              # validateEnvironment, settings, inventory, uploadMiddleware
+  pdf/                      # Plantillas Pug: Invoice, Quote, Offer, Payment
+  setup/                    # setup.js, defaultSettings (appSettings.json), setupConfig.json
+
+frontend/src/
+  apps/                     # ErpApp, Header, Navigation
+  router/                  # AppRouter
+  redux/                   # settings, persist
+  forms/                   # AdminForm, LoginForm, DynamicForm
+  config/                  # serverApiConfig
 ```
 
-IDURAR is Open Source ERP / CRM (Invoice / Quote / Accounting ) Based on Advanced Mern Stack (Node.js / Express.js / MongoDb / React.js ) with Ant Design (AntD) and Redux
+---
 
-</div>
+## Referencias
 
-**🚀 Self-hosted Entreprise Version** : [https://cloud.idurarapp.com](https://cloud.idurarapp.com/)
-
-
-## Features :
-
-Invoice Management
-
-Payment Management
-
-Quote Management
-
-Customer Management
-
-Ant Design Framework(AntD) 🐜
-
-Based on Mern Stack (Node.js / Express.js / MongoDb / React.js ) 👨‍💻
-
-### May i can use IDURAR for Commercial use :
-
-- Yes You can use IDURAR for free for personal or Commercial use.
-
-## Our Sponsors
-
-  <a href="https://m.do.co/c/4ead8370b905?ref=idurarapp.com">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.svg" width="201px">
-  </a>
-
-#
-
-<img width="1403" alt="Open Source ERP CRM" src="https://github.com/idurar/idurar-erp-crm/assets/136928179/a6712286-7ca6-4822-8902-fb7523533ee8">
-
-## Free Open Source ERP / CRM App
-
-IDURAR is Open "Fair-Code" Source ERP / CRM (Invoice / Inventory / Accounting / HR) Based on Mern Stack (Node.js / Express.js / MongoDb / React.js ) with Ant Design (AntD) and Redux
-
-
-## Getting started
-
-1.[Clone the repository](INSTALLATION-INSTRUCTIONS.md#step-1-clone-the-repository)
-
-2.[Create Your MongoDB Account and Database Cluster](INSTALLATION-INSTRUCTIONS.md#Step-2-Create-Your-MongoDB-Account-and-Database-Cluster)
-
-3.[Edit the Environment File](INSTALLATION-INSTRUCTIONS.md#Step-3-Edit-the-Environment-File)
-
-4.[Update MongoDB URI](INSTALLATION-INSTRUCTIONS.md#Step-4-Update-MongoDB-URI)
-
-5.[Install Backend Dependencies](INSTALLATION-INSTRUCTIONS.md#Step-5-Install-Backend-Dependencies)
-
-6.[Run Setup Script](INSTALLATION-INSTRUCTIONS.md#Step-6-Run-Setup-Script)
-
-7.[Run the Backend Server](INSTALLATION-INSTRUCTIONS.md#Step-7-Run-the-Backend-Server)
-
-8.[Install Frontend Dependencies](INSTALLATION-INSTRUCTIONS.md#Step-8-Install-Frontend-Dependencies)
-
-9.[Run the Frontend Server](INSTALLATION-INSTRUCTIONS.md#Step-9-Run-the-Frontend-Server)
-
-## Contributing
-
-1.[How to contribute](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#how-to-contribute)
-
-2.[Reporting issues](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#reporting-issues)
-
-3.[Working on issues ](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#working-on-issues)
-
-4.[Submitting pull requests](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#submitting-pull-requests)
-
-5.[Commit Guidelines](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#commit-guidelines)
-
-6.[Coding Guidelines](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#coding-guidelines)
-
-7.[Questions](https://github.com/idurar/idurar-erp-crm/blob/master/CONTRIBUTING.md#questions)
-
-
-## Show your support
-
-Dont forget to give a ⭐️ to this project ... Happy coding!
-
-**🚀 Self-hosted Entreprise Version** : [https://cloud.idurarapp.com](https://cloud.idurarapp.com)
-
-## License
-
-IDURAR is Free Open Source Released under the GNU Affero General Public License v3.0.
+- Proyecto base: [Idurar ERP CRM Open Source](https://github.com/idurar/idurar-erp-crm-open-source)
+- Facturación electrónica (sandbox): [FACTUS](https://factus.com.co/)
+- Pagos (sandbox): [ePayco](https://epayco.co/)
+- Email: [Resend](https://resend.com)
