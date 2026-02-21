@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: dev
+    container_name: samuel-dev-backend
+    working_dir: /app
+    command: npm run dev
+    ports:
+      - "8889:8889"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: dev
+    container_name: samuel-dev-frontend
+    working_dir: /app
+    command: ["npm","run","dev","--","--host"]
+    ports:
+      - "3001:3001"
+    environment: {}
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
