@@ -265,7 +265,7 @@ html
     
       header.clearfix
         .top-area
-          img.logo.left(src=settings.public_server_file+settings.company_logo)
+          img.logo.left(src='http://localhost:8889/'+settings.company_logo.replace('public/', ''))
           .right.company-info
               p.strong #{settings.company_name}
               p #{settings.company_address}
@@ -303,7 +303,10 @@ html
       .col.col-24
           .space     
       footer.footer-invoice
-        //- | This Payment Reciept was created on a computer and is valid without the signature and seal.
+        if settings.pdf_payment_footer && settings.pdf_payment_footer !== ''
+          | #{settings.pdf_payment_footer}
+        else
+          //- | This Payment Receipt was created on a computer and is valid without the signature and seal.
           
 
    

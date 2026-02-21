@@ -23,6 +23,11 @@ const routerApp = (entity, controller) => {
   if (entity === 'quote') {
     router.route(`/${entity}/convert/:id`).get(catchErrors(controller['convert']));
   }
+
+  if (entity === 'invoice') {
+    router.route(`/${entity}/downloadPDF/:id`).get(catchErrors(controller['downloadPDF']));
+    router.route(`/${entity}/downloadFactusPDF/:id`).get(catchErrors(controller['downloadFactusPDF']));
+  }
 };
 
 routesList.forEach(({ entity, controllerName }) => {

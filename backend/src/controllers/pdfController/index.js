@@ -1,7 +1,8 @@
 const pug = require('pug');
 const fs = require('fs');
+const path = require('path');
 const moment = require('moment');
-let pdf = require('html-pdf');
+const { getPuppeteerInstance } = require('@/services/puppeteerConfig');
 const { listAllSettings, loadSettings } = require('@/middlewares/settings');
 const { getData } = require('@/middlewares/serverData');
 const useLanguage = require('@/locale/useLanguage');
@@ -21,6 +22,13 @@ exports.generatePdf = async (
   try {
     const { targetLocation } = info;
 
+    // Crear la carpeta de descarga si no existe
+    const downloadDir = path.dirname(targetLocation);
+    if (!fs.existsSync(downloadDir)) {
+      console.log(`📁 Creando carpeta de descarga: ${downloadDir}`);
+      fs.mkdirSync(downloadDir, { recursive: true });
+    }
+
     // if PDF already exists, then delete it and create a new PDF
     if (fs.existsSync(targetLocation)) {
       fs.unlinkSync(targetLocation);
@@ -32,7 +40,7 @@ exports.generatePdf = async (
       // Compile Pug template
 
       const settings = await loadSettings();
-      const selectedLang = settings['idurar_app_language'];
+      const selectedLang = settings['samueldev_app_language'];
       const translate = useLanguage({ selectedLang });
 
       const {
@@ -66,17 +74,35 @@ exports.generatePdf = async (
         moneyFormatter,
         moment: moment,
       });
-
-      pdf
-        .create(htmlContent, {
+      
+      // Generar PDF usando Puppeteer
+      try {
+        const browser = await getPuppeteerInstance();
+        const page = await browser.newPage();
+        
+        // Configurar el contenido HTML
+        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+        
+        // Generar PDF
+        await page.pdf({
+          path: targetLocation,
           format: info.format,
-          orientation: 'portrait',
-          border: '10mm',
-        })
-        .toFile(targetLocation, function (error) {
-          if (error) throw new Error(error);
-          if (callback) callback();
+          printBackground: true,
+          margin: {
+            top: '10mm',
+            right: '10mm',
+            bottom: '10mm',
+            left: '10mm'
+          }
         });
+        
+        await browser.close();
+        
+        if (callback) callback();
+      } catch (error) {
+        console.error('❌ Error generando PDF con Puppeteer:', error);
+        throw error;
+      }
     }
   } catch (error) {
     throw new Error(error);

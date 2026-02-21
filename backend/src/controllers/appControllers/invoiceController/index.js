@@ -8,6 +8,8 @@ const update = require('./update');
 const remove = require('./remove');
 const paginatedList = require('./paginatedList');
 const read = require('./read');
+const downloadPDF = require('./downloadPDF');
+const downloadFactusPDF = require('./downloadFactusPDF');
 
 methods.mail = sendMail;
 methods.create = create;
@@ -16,5 +18,7 @@ methods.delete = remove;
 methods.summary = summary;
 methods.list = paginatedList;
 methods.read = read;
+methods.downloadPDF = downloadPDF;
+methods.downloadFactusPDF = downloadFactusPDF;
 
 module.exports = methods;

@@ -8,20 +8,22 @@ html
         margin: 0;
         width: 100%; 
         height: 297mm;
+        background: #{model.invoiceTemplate && model.invoiceTemplate.backgroundColor ? model.invoiceTemplate.backgroundColor : '#ffffff'};
       }
 
       body{
         width: 100%; 
         margin: 0;
         padding: 0px ;
-        background: #ffffff;
-        font-family: sans-serif;
-        font-size:12px;
-        color:#222
+        background: #{model.invoiceTemplate && model.invoiceTemplate.backgroundColor ? model.invoiceTemplate.backgroundColor : '#ffffff'};
+        font-family: #{model.invoiceTemplate && model.invoiceTemplate.fontFamily ? model.invoiceTemplate.fontFamily : 'Arial, sans-serif'};
+        font-size: #{model.invoiceTemplate && model.invoiceTemplate.fontSize ? model.invoiceTemplate.fontSize : 14}px;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.secondaryColor ? model.invoiceTemplate.secondaryColor : '#222'};
+        line-height: 1.4;
       }
       *, *:before, *:after {
         box-sizing: inherit;
-        color:#222
+        color: #{model.invoiceTemplate && model.invoiceTemplate.secondaryColor ? model.invoiceTemplate.secondaryColor : '#222'}
       }
 
       .clearfix {
@@ -51,33 +53,50 @@ html
         text-align: left;
       }
       .logo {
-        width: 150px;
+        width: #{model.invoiceTemplate && model.invoiceTemplate.logoSize ? model.invoiceTemplate.logoSize : 250}px;
+        height: auto;
+        max-height: 100px;
+        object-fit: contain;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        display: block;
+        margin-bottom: 15px;
+        float: #{model.invoiceTemplate && model.invoiceTemplate.logoPosition ? model.invoiceTemplate.logoPosition : 'left'};
       }
       .company-info{
         text-align: right;
-        font-size:12px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
       }
       h1.invoice{
-        font-size:32px;
-        color:#52008c;
-        margin-top:0;
+        font-size: #{model.invoiceTemplate && model.invoiceTemplate.headerFontSize ? model.invoiceTemplate.headerFontSize : 42}px;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.primaryColor ? model.invoiceTemplate.primaryColor : '#52008c'};
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
       p.strong{
-        font-weight:700;
+        font-weight: 800;
+        font-size: 16px;
+        margin-bottom: 8px;
       }
       .billTo p {
         text-align: right !important;
         float:right;
         display:block;
-        font-size:12px;
+        font-size: 15px;
+        font-weight: 600;
         width:100%;
         margin-top:0;
-        margin-bottom:10px;
-        
+        margin-bottom:12px;
+        line-height: 1.4;
       }
 
       .tableHeader{
-        color:#52008c;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.tableHeaderColor ? model.invoiceTemplate.tableHeaderColor : '#52008c'};
       }
       .clearfix {
         display: block; }
@@ -156,17 +175,55 @@ html
       .col-24 {
         width: 100%; }
       .space {
-        margin-top: 30px;
-        margin-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 50px;
         width:100%;
+      }
+      
+      /* Estilos adicionales para mejorar la presentación */
+      .invoice-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #{model.invoiceTemplate && model.invoiceTemplate.primaryColor ? model.invoiceTemplate.primaryColor : '#52008c'};
+      }
+      
+      .invoice-details p {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 8px 0;
+      }
+      
+      .total-section {
+        background-color: #{model.invoiceTemplate && model.invoiceTemplate.primaryColor ? model.invoiceTemplate.primaryColor : '#52008c'};
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        text-align: center;
+      }
+      
+      .total-section .total-label {
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .total-section .total-amount {
+        font-size: 24px;
+        font-weight: 800;
+        margin-top: 10px;
       }
       .top-area .number-invoice > h1 {
         font-weight: 500;
       }
       .about-invoice {
         padding: 0px 15px;
-        margin-top: 10px;
-        font-size: 13px;
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: 600;
       }
       .project-invoice {
         float: left;
@@ -175,10 +232,11 @@ html
       .project-invoice span {
         color: #5d6975;
         text-align: right;
-        width: 52px;
-        margin-right: 10px;
+        width: 60px;
+        margin-right: 12px;
         display: inline-block;
-        font-size: 0.8em;
+        font-size: 14px;
+        font-weight: 600;
       }
       .company-invoice {
         float: right;
@@ -187,7 +245,9 @@ html
       }
       .project-invoice div, .company-invoice div {
         white-space: nowrap;
-        margin: 5px auto;
+        margin: 8px auto;
+        font-size: 15px;
+        font-weight: 600;
       }
       .table-invoice {
         width: 100%;
@@ -196,30 +256,35 @@ html
         margin-bottom: 20px;
       }
       .table-invoice tr:nth-child(2n-1) td {
-        background: #fcfeff;
+        background: #{model.invoiceTemplate && model.invoiceTemplate.tableRowColor ? model.invoiceTemplate.tableRowColor : '#fcfeff'};
       }
       .table-invoice th, .table-invoice td {
         text-align: center;
       }
       .table-invoice th {
-        padding: 8px 10px;
-        border-bottom: 1px solid #c2e0f2;
-        color:#52008c;
+        padding: 15px 12px;
+        border-bottom: 2px solid #{model.invoiceTemplate && model.invoiceTemplate.borderColor ? model.invoiceTemplate.borderColor : '#c2e0f2'};
+        color: #{model.invoiceTemplate && model.invoiceTemplate.tableHeaderColor ? model.invoiceTemplate.tableHeaderColor : '#52008c'};
         white-space: nowrap;
-        font-weight: 700;
-        font-size: 12px;
+        font-weight: 800;
+        font-size: 16px;
         text-align: right;
+        background-color: #{model.invoiceTemplate && model.invoiceTemplate.tableHeaderBgColor ? model.invoiceTemplate.tableHeaderBgColor : '#f8f9fa'};
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
       tbody{
-        border-bottom: 1px solid #c2e0f2;
+        border-bottom: 1px solid #{model.invoiceTemplate && model.invoiceTemplate.borderColor ? model.invoiceTemplate.borderColor : '#c2e0f2'};
       }
       .table-invoice .service, .table-invoice .desc {
         text-align: left;
       }
       .table-invoice td {
-        padding: 10px ;
+        padding: 15px 12px;
         text-align: right;
-        font-size: 11px;
+        font-size: 14px;
+        font-weight: 600;
+        border-bottom: 1px solid #{model.invoiceTemplate && model.invoiceTemplate.borderColor ? model.invoiceTemplate.borderColor : '#e9ecef'};
       }
       .table-invoice td.service, .table-invoice td.desc {
         vertical-align: top;
@@ -228,39 +293,53 @@ html
         
       }
       .table-invoice td.grand {
-        border-top: 1px solid #5d6975;
+        border-top: 3px solid #{model.invoiceTemplate && model.invoiceTemplate.primaryColor ? model.invoiceTemplate.primaryColor : '#52008c'};
+        font-weight: 800;
+        font-size: 16px;
+        background-color: #{model.invoiceTemplate && model.invoiceTemplate.tableRowColor ? model.invoiceTemplate.tableRowColor : '#f8f9fa'};
+        padding: 20px 12px;
       }
       .service span{
         display:block;
         clear:both;
         width : 100%;
-        color:#666;
-        margin-top:5px;
-        font-size:10px;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.textColor ? model.invoiceTemplate.textColor : '#666'};
+        margin-top:8px;
+        font-size: 12px;
+        font-weight: 500;
+        font-style: italic;
       }
       .notice-invoice {
         padding: 15px;
       }
       .notice-invoice .notice {
-        color: #5d6975;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.textColor ? model.invoiceTemplate.textColor : '#5d6975'};
         
       }
       .footer-invoice {
-        margin-top:30px
-        color: #5d6975;
+        margin-top: 40px;
+        color: #{model.invoiceTemplate && model.invoiceTemplate.textColor ? model.invoiceTemplate.textColor : '#5d6975'};
         width: 100%;
-        position: absolute;
+        position: relative;
         bottom: 0;
-        
-        padding: 20px 0;
+        padding: 25px 0;
         text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        border-top: 2px solid #{model.invoiceTemplate && model.invoiceTemplate.borderColor ? model.invoiceTemplate.borderColor : '#c2e0f2'};
+        background-color: #{model.invoiceTemplate && model.invoiceTemplate.backgroundColor ? model.invoiceTemplate.backgroundColor : '#ffffff'};
+        line-height: 1.5;
       }
  
   body
     
       header.clearfix
         .top-area
-          img.logo.left(src=settings.public_server_file+settings.company_logo)
+          if settings.company_logo && settings.company_logo !== ''
+            img.logo.left(src='http://localhost:8889/'+settings.company_logo, alt='Company Logo')
+          else
+            .logo-placeholder.left(style='width: 200px; height: 80px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;')
+              span(style='color: #999; font-size: 12px;') COMPANY LOGO
           .right.company-info
               p.strong #{settings.company_name}
               p #{settings.company_address}
@@ -314,13 +393,19 @@ html
               td(colspan='3') #{translate('TAX')} #{model.taxRate} %
               td.total #{moneyFormatter({amount:model.taxTotal})}
             tr
-              td.grand.total(colspan='3')  #{translate('TOTAL')} 
+              td.grand.total(colspan='3')  
+                .total-section
+                  .total-label #{translate('TOTAL')}
+                  .total-amount #{moneyFormatter({amount:model.total})}
               td.grand.total #{moneyFormatter({amount:model.total})}
         
       .col.col-24
           .space     
       footer.footer-invoice
-        //- | Invoice was created on a computer and is valid without the signature and seal.
+        if settings.pdf_invoice_footer && settings.pdf_invoice_footer !== ''
+          | #{settings.pdf_invoice_footer}
+        else
+          | Invoice was created on a computer and is valid without the signature and seal.
           
 
    
